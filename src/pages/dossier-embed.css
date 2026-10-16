@@ -1,0 +1,265 @@
+/* Bìa hồ sơ inside the site (Hồ sơ của tôi): no own top bar, the site's green page is the desk */
+
+/* exactly one screen tall under the site header (80px): the desk fills it, the folder list scrolls inside */
+.dz-web.embedded {
+  height: calc(100dvh - 80px);
+  min-height: 560px;
+  padding: 8px 20px 12px;
+  background: none;
+  display: flex;
+  flex-direction: column;
+}
+.dz-web.embedded .wrap {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  width: 100%;
+}
+.dz-web.embedded .wfoot {
+  width: 100%;
+  margin-top: 8px;
+}
+.dz-phone.embedded {
+  height: calc(100dvh - 92px);
+  min-height: 0;
+  margin: 0 12px 12px;
+  border-radius: 24px;
+}
+.dz-phone.embedded .scene {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* cabinet: more than one folder, plus "đang theo dõi" */
+.dz-web .dos {
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dz-web .dos:not(.on):hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateX(3px);
+}
+.dz-web .dos:not(.on) .dbar {
+  background: rgba(255, 255, 255, 0.18);
+}
+.dz-web .dos:not(.on) .dbar i {
+  background: #5fd3a1;
+}
+.dz-web .dos:not(.on) .dtxt b {
+  padding-right: 0;
+}
+.dz-web .cabinet {
+  overflow-y: auto;
+}
+
+/* phone: which folder is open, tap to switch */
+.dz .mswitch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 60px;
+  padding: 10px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-2);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 24px 24px 0 0;
+}
+.dz .mswitch .dico {
+  position: relative;
+  width: 36px;
+  height: 30px;
+  flex: none;
+}
+.dz .mswitch .dico::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0;
+  width: 15px;
+  height: 7px;
+  border-radius: 4px 4px 0 0;
+  background: var(--kraft-2);
+}
+.dz .mswitch .dico::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6px;
+  bottom: 0;
+  border-radius: 3px 6px 6px 6px;
+  background: linear-gradient(180deg, #ddbb80, var(--kraft));
+}
+.dz .mswitch .t {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+.dz .mswitch small {
+  font-size: 12px;
+  color: var(--muted);
+}
+.dz .mswitch b {
+  font-size: 15.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dz .mswitch em {
+  font-style: normal;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+/* list of folders / projects in the add & switch pane */
+.dz .plist {
+  display: flex;
+  flex-direction: column;
+}
+.dz .plist > * {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 10px 2px;
+  border: 0;
+  border-bottom: 1px solid #efe8d9;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ink);
+  text-decoration: none;
+}
+.dz .plist > *:last-child {
+  border-bottom: 0;
+}
+.dz .plist .fold-ic {
+  position: relative;
+  width: 36px;
+  height: 30px;
+  flex: none;
+}
+.dz .plist .fold-ic::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0;
+  width: 15px;
+  height: 7px;
+  border-radius: 4px 4px 0 0;
+  background: var(--kraft-2);
+}
+.dz .plist .fold-ic::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6px;
+  bottom: 0;
+  border-radius: 3px 6px 6px 6px;
+  background: linear-gradient(180deg, #ddbb80, var(--kraft));
+}
+.dz .plist .fold-ic.empty::after {
+  background: transparent;
+  border: 2px dashed #c9bfa7;
+}
+.dz .plist .fold-ic.empty::before {
+  background: #c9bfa7;
+}
+.dz .plist .t {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.dz .plist b {
+  font-size: 15.5px;
+  font-weight: 600;
+}
+.dz .plist small {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.dz .plist .go {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  white-space: nowrap;
+}
+.dz .plist .on-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--green);
+  background: #e3f1ea;
+  border-radius: 999px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* no folder yet */
+.dz-empty {
+  display: flex;
+  justify-content: center;
+  padding: 24px 12px 48px;
+}
+.dz-empty .paper {
+  width: 100%;
+  max-width: 620px;
+}
+.dz-empty .hand {
+  font-family: var(--hand);
+  font-size: 22px;
+  color: var(--blue);
+  transform: rotate(-2deg);
+  align-self: flex-start;
+}
+.dz-empty h1 {
+  margin: 0;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1.15;
+}
+.dz .chat-note {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12.5px;
+  color: #0b4a38;
+  background: #e3f1ea;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+/* account note under the cabinet / in panes */
+.dz-web .acct {
+  margin: 4px 6px 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #9db4a9;
+}
+.dz-web .acct b {
+  color: #e7efeb;
+}
+.dz .acct a {
+  color: var(--lamp);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.dz .note a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

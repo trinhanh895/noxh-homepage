@@ -1,0 +1,768 @@
+/* Panes: a paper pulled out of the folder — choose a state, save with a phone number, OTP, upload, errors,
+ * how to get a paper, ask about it, results, review the three answers, the ⋯ menu, stopping the dossier. */
+
+.dz .pane {
+  position: absolute;
+  inset: 0;
+  z-index: 18;
+  background: linear-gradient(180deg, #f4efe4, #e8dfcc);
+  overflow-y: auto;
+  padding: 14px 16px 28px;
+  animation: dz-doc-in 360ms cubic-bezier(0.2, 0.9, 0.3, 1.1);
+}
+.dz-web .pane {
+  background: linear-gradient(180deg, var(--blotter), var(--blotter-2));
+  padding: 24px 32px 32px;
+}
+.dz .pane-in {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dz .pane-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.dz .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(27, 38, 34, 0.07);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.dz .crumb {
+  margin-left: auto;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: right;
+}
+.dz .pane-in h2 {
+  margin: 0;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.dz .lede {
+  margin: -6px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+.dz .paper {
+  position: relative;
+  background: var(--paper-2);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 14px 26px rgba(60, 40, 10, 0.12);
+  border-top: 5px solid var(--c, var(--kraft-2));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dz .paper h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+.dz .sub {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.dz .q-label {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 2px 0 -2px;
+}
+.dz .choice {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1.5px solid var(--line);
+  background: var(--paper-2);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    transform 0.15s;
+}
+.dz .choice:hover {
+  border-color: var(--green);
+  transform: translateX(3px);
+}
+.dz .rd {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid #a9a08c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dz .rd::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  transform: scale(0);
+  transition: transform 0.18s;
+}
+.dz .choice b {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+.dz .choice small {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+.dz .choice.on {
+  border-color: var(--green);
+  background: #eef5f1;
+}
+.dz .choice.on .rd {
+  border-color: var(--green);
+}
+.dz .choice.on .rd::after {
+  transform: scale(1);
+}
+.dz .row-acts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+.dz .btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.dz .btn.ghost {
+  background: transparent;
+  color: var(--green);
+  box-shadow: inset 0 0 0 1.5px var(--green);
+}
+.dz .btn.block {
+  width: 100%;
+}
+.dz .note {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0;
+}
+.dz .fld-in {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dz .fld-in > span {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.dz .fld-in input {
+  min-height: 52px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1.5px solid #cbbf9f;
+  background: #fff;
+  font: inherit;
+  font-size: 17px;
+  color: var(--ink);
+  width: 100%;
+}
+.dz .fld-in input:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(2, 71, 58, 0.15);
+}
+.dz .fld-in em {
+  font-style: normal;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.dz .fld-in .err {
+  color: #b42318;
+  font-weight: 600;
+}
+.dz .check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  cursor: pointer;
+}
+.dz .check input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--green);
+  flex: none;
+}
+.dz .reasons {
+  display: grid;
+  gap: 10px;
+}
+.dz .reasons > div {
+  display: flex;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.dz .reasons b {
+  display: block;
+  font-size: 14px;
+  color: var(--ink);
+}
+.dz .reasons i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--stamp);
+  flex: none;
+  margin-top: 6px;
+}
+.dz .otp {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+.dz .otp span {
+  height: 58px;
+  border-radius: 12px;
+  border: 1.5px solid #cbbf9f;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+.dz .otp span.cur {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(2, 71, 58, 0.15);
+}
+.dz .otp input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  font-size: 16px;
+}
+.dz .steps {
+  display: flex;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.dz .steps span {
+  flex: 1;
+  padding-top: 6px;
+  border-top: 4px solid #dcd3c1;
+}
+.dz .steps span.on {
+  border-color: var(--green);
+  color: var(--ink);
+}
+.dz .steps span.done {
+  border-color: var(--stamp);
+}
+.dz .slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.dz .slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 150px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px dashed #cbbf9f;
+  background: rgba(255, 253, 248, 0.6);
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
+.dz .slot b {
+  font-size: 14px;
+}
+.dz .thumb2 {
+  height: 64px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #d9e7f2, #bfd3e6);
+  position: relative;
+}
+.dz .thumb2::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  width: 20px;
+  height: 30px;
+  border-radius: 3px;
+  background: #8ea5bb;
+}
+.dz .slot.up {
+  border-style: solid;
+  border-color: var(--line);
+  background: var(--paper-2);
+  cursor: default;
+}
+.dz .slot.err {
+  border-style: solid;
+  border-color: #e0a29a;
+  background: #fff5f3;
+  cursor: default;
+}
+.dz .slot .ok {
+  color: var(--stamp);
+  font-weight: 600;
+}
+.dz .slot .bad {
+  color: #b42318;
+  font-weight: 600;
+}
+.dz .pbar {
+  height: 5px;
+  border-radius: 3px;
+  background: #e3dacb;
+  overflow: hidden;
+}
+.dz .pbar i {
+  display: block;
+  height: 100%;
+  background: var(--green);
+  animation: dz-fill 900ms ease-out forwards;
+}
+@keyframes dz-fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.dz .demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px dashed #d6ccb6;
+  padding-top: 10px;
+}
+.dz .demo button {
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid #cbbf9f;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.dz .demo button.on {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.dz .warn-note {
+  position: relative;
+  background: #ffe1d6;
+  color: #5c1f0f;
+  padding: 16px 16px 14px;
+  border-radius: 2px;
+  transform: rotate(-0.6deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+.dz .warn-note::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  width: 46px;
+  height: 16px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(255, 255, 255, 0.6);
+}
+.dz .warn-note b {
+  display: block;
+  font-family: var(--hand);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.1;
+}
+.dz .warn-note p {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+}
+.dz .warn-note ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+}
+.dz .plan {
+  display: flex;
+  flex-direction: column;
+}
+.dz .plan > div {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #efe8d9;
+}
+.dz .plan > div:last-child {
+  border-bottom: 0;
+}
+.dz .plan .n {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dz .plan small {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.dz .plan b {
+  font-size: 15.5px;
+  font-weight: 600;
+}
+.dz .plan ul {
+  margin: 2px 0 0;
+  padding-left: 18px;
+  font-size: 15px;
+}
+.dz .src {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0;
+}
+.dz .src b {
+  color: var(--green);
+}
+.dz .dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.dz .dates input {
+  font-size: 15px;
+}
+.dz .chips {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dz .chips a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--paper-2);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.dz .chips a:hover {
+  border-color: var(--green);
+}
+.dz .ask-row {
+  display: flex;
+  gap: 8px;
+}
+.dz .ask-row input {
+  flex: 1;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1.5px solid #cbbf9f;
+  background: #fff;
+  font: inherit;
+  font-size: 15px;
+}
+.dz .ask-row .btn {
+  min-height: 48px;
+}
+.dz .rules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.dz .rules li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #efe8d9;
+  font-size: 15px;
+}
+.dz .rules li:last-child {
+  border-bottom: 0;
+}
+.dz .rules .ic {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--stamp);
+}
+.dz .rules .ic.wait {
+  background: #c9bfa7;
+}
+.dz .tag {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(27, 38, 34, 0.06);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.dz .prefill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #efe8d9;
+  font-size: 14.5px;
+}
+.dz .prefill:last-child {
+  border-bottom: 0;
+}
+.dz .prefill small {
+  display: block;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+.dz .ans {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #efe8d9;
+}
+.dz .ans:last-child {
+  border-bottom: 0;
+}
+.dz .ans small {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.dz .ans b {
+  font-size: 15.5px;
+  font-weight: 600;
+}
+.dz .ans .link {
+  margin-left: auto;
+  min-height: 40px;
+}
+.dz .grp h4 {
+  margin: 8px 0 2px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.dz .grp > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 15px;
+}
+.dz .grp i {
+  width: 8px;
+  height: 22px;
+  border-radius: 2px;
+  flex: none;
+}
+.dz .grp small {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.dz .menu {
+  display: flex;
+  flex-direction: column;
+}
+.dz .menu button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 62px;
+  padding: 10px 4px;
+  border: 0;
+  border-bottom: 1px solid #efe8d9;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+.dz .menu button:last-child {
+  border-bottom: 0;
+}
+.dz .menu button small {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.dz .menu button.danger {
+  color: #b42318;
+}
+.dz .new {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: #e5532d;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.dz .ws {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dz .ws .stg {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.dz .ws .tools {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+.dz .tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(27, 38, 34, 0.14);
+  background: rgba(255, 253, 248, 0.7);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+.dz .tool.more {
+  width: 36px;
+  padding: 0;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+.dz-phone .ws {
+  padding: 0 18px 8px;
+}
+.dz-web .ws {
+  margin: -8px 0 16px;
+}
+.dz .clip {
+  margin-left: auto;
+  font-family: var(--hand);
+  font-size: 15px;
+  line-height: 1.1;
+  background: var(--note);
+  color: #3d3410;
+  padding: 3px 8px;
+  transform: rotate(-2deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+}
+.dz-web .card .clip {
+  margin: auto 0 0;
+  align-self: flex-start;
+}
+.dz .clip.q {
+  background: #dfe8ff;
+  color: #1e3a8a;
+}
+.dz .clip.have {
+  background: #e3f1ea;
+  color: #0b4a38;
+}
+.dz .stopped {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(60, 40, 10, 0.22);
+  border-radius: inherit;
+}
+.dz .stopped .paper {
+  max-width: 380px;
+}
+.dz .stopmark {
+  align-self: flex-start;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #b42318;
+  border: 3px double #b42318;
+  border-radius: 6px;
+  padding: 4px 10px;
+  transform: rotate(-6deg);
+  font-size: 15px;
+}

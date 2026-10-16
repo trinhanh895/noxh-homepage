@@ -1,0 +1,177 @@
+import type { CSSProperties } from 'react'
+import { HugeiconsIcon, type IconSvgElement } from '@hugeicons/react'
+import {
+  Add01Icon,
+  Alert02Icon,
+  AlertCircleIcon,
+  ArrowDown01Icon,
+  ArrowDownDoubleIcon,
+  ArrowLeft01Icon,
+  ArrowLeft02Icon,
+  ArrowRight01Icon,
+  ArrowRight02Icon,
+  ArrowUp02Icon,
+  ArrowUpDoubleIcon,
+  ArrowUpRight01Icon,
+  BookOpen01Icon,
+  Bookmark01Icon,
+  BookmarkRemove01Icon,
+  BridgeIcon,
+  BubbleChatIcon,
+  Building03Icon,
+  Calendar03Icon,
+  Call02Icon,
+  Cancel01Icon,
+  CancelCircleIcon,
+  CctvCameraIcon,
+  CheckListIcon,
+  CheckmarkCircle02Icon,
+  ChildIcon,
+  CircleIcon,
+  City01Icon,
+  Clock01Icon,
+  ConstructionIcon,
+  CustomerSupportIcon,
+  Delete02Icon,
+  DoorOpenIcon,
+  Dumbbell01Icon,
+  FireExtinguisherIcon,
+  Flag02Icon,
+  FolderAddIcon,
+  FolderOpenIcon,
+  HandHeartIcon,
+  Home01Icon,
+  Hospital01Icon,
+  HourglassIcon,
+  IdentityCardIcon,
+  Image01Icon,
+  ImagesIcon,
+  InformationCircleIcon,
+  LandmarkIcon,
+  Location01Icon,
+  LockIcon,
+  Mail01Icon,
+  MapsLocation01Icon,
+  Menu01Icon,
+  OfficeIcon,
+  Plant02Icon,
+  RefreshIcon,
+  Route01Icon,
+  School01Icon,
+  Search01Icon,
+  SecurityWarningIcon,
+  SentIcon,
+  ShieldCheckIcon,
+  SparklesIcon,
+  SwimmingIcon,
+  Tick02Icon,
+  Tree02Icon,
+  UserIcon,
+  Wallet01Icon,
+  Wrench01Icon,
+  BedDoubleIcon,
+  Bathtub01Icon,
+  UserGroupIcon,
+} from '@hugeicons/core-free-icons'
+
+/*
+ * Hugeicons (free, stroke-rounded set). Call sites keep short semantic names; this table maps them.
+ * To add one: find it on hugeicons.com, import it above and add a line below.
+ */
+const ICONS = {
+  users: UserGroupIcon,
+  bed: BedDoubleIcon,
+  bath: Bathtub01Icon,
+  'angle-down': ArrowDown01Icon,
+  'angle-left': ArrowLeft01Icon,
+  'angle-right': ArrowRight01Icon,
+  'angles-down': ArrowDownDoubleIcon,
+  'angles-up': ArrowUpDoubleIcon,
+  'arrow-left': ArrowLeft02Icon,
+  'arrow-right': ArrowRight02Icon,
+  'arrow-up': ArrowUp02Icon,
+  'arrow-up-right': ArrowUpRight01Icon,
+  bars: Menu01Icon,
+  'book-open': BookOpen01Icon,
+  bookmark: Bookmark01Icon,
+  'bookmark-slash': BookmarkRemove01Icon,
+  bridge: BridgeIcon,
+  'building-user': OfficeIcon,
+  buildings: Building03Icon,
+  calendar: Calendar03Icon,
+  'camera-cctv': CctvCameraIcon,
+  'caret-right': ArrowRight01Icon,
+  check: Tick02Icon,
+  children: ChildIcon,
+  circle: CircleIcon,
+  'circle-check': CheckmarkCircle02Icon,
+  'circle-exclamation': AlertCircleIcon,
+  'circle-info': InformationCircleIcon,
+  'circle-xmark': CancelCircleIcon,
+  clock: Clock01Icon,
+  'comment-dots': BubbleChatIcon,
+  'door-open': DoorOpenIcon,
+  dumbbell: Dumbbell01Icon,
+  envelope: Mail01Icon,
+  'fire-extinguisher': FireExtinguisherIcon,
+  'flag-checkered': Flag02Icon,
+  'folder-open': FolderOpenIcon,
+  'folder-plus': FolderAddIcon,
+  'hand-holding-heart': HandHeartIcon,
+  headset: CustomerSupportIcon,
+  'helmet-safety': ConstructionIcon,
+  hospital: Hospital01Icon,
+  'hourglass-half': HourglassIcon,
+  'house-circle-xmark': Home01Icon,
+  'id-card': IdentityCardIcon,
+  image: Image01Icon,
+  images: ImagesIcon,
+  landmark: LandmarkIcon,
+  'list-check': CheckListIcon,
+  'location-dot': Location01Icon,
+  lock: LockIcon,
+  'map-location-dot': MapsLocation01Icon,
+  'paper-plane': SentIcon,
+  'person-swimming': SwimmingIcon,
+  phone: Call02Icon,
+  plus: Add01Icon,
+  'rotate-left': RefreshIcon,
+  route: Route01Icon,
+  school: School01Icon,
+  search: Search01Icon,
+  'screwdriver-wrench': Wrench01Icon,
+  seedling: Plant02Icon,
+  'shield-check': ShieldCheckIcon,
+  'shield-exclamation': SecurityWarningIcon,
+  sparkles: SparklesIcon,
+  'trash-can': Delete02Icon,
+  tree: Tree02Icon,
+  'tree-city': City01Icon,
+  'triangle-exclamation': Alert02Icon,
+  user: UserIcon,
+  wallet: Wallet01Icon,
+  xmark: Cancel01Icon,
+} satisfies Record<string, IconSvgElement>
+
+export type IconName = keyof typeof ICONS
+
+/** "solid" draws a heavier stroke for emphasis; "regular" is the default line weight */
+export type IconStyle = 'solid' | 'regular'
+
+type IconProps = {
+  name: IconName | (string & {})
+  variant?: IconStyle
+  size?: number
+  className?: string
+  style?: CSSProperties
+}
+
+export function Icon({ name, variant = 'regular', size = 16, className = '', style }: IconProps) {
+  const icon = ICONS[name as IconName]
+  if (!icon && import.meta.env.DEV) console.warn(`[Icon] "${name}" is not mapped to a Hugeicons icon`)
+  return (
+    <span aria-hidden className={`inline-flex shrink-0 items-center justify-center ${className}`} style={{ width: size, height: size, ...style }}>
+      <HugeiconsIcon icon={icon ?? CircleIcon} size={size} color="currentColor" strokeWidth={variant === 'solid' ? 2 : 1.5} />
+    </span>
+  )
+}
