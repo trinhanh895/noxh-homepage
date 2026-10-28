@@ -5,7 +5,7 @@ import { Icon } from './Icon'
  * Heading roles on inner pages (keep them consistent):
  *  - Page title (h1):       headline uppercase, 32 → 44px
  *  - Section title (h2):    headline uppercase, 24px (app pages) or 32px (reading pages like a project)
- *  - Card / item title:     Inter semibold, 20px — never Fahkwang, never a trailing period
+ *  - Card / item title:     Inter semibold, 20px — never the headline font, never a trailing period
  */
 
 /* White rounded content panel used by every inner page (same frame as the project detail).

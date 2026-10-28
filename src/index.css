@@ -3,7 +3,7 @@
 /* Design tokens — mirrored from the NOXH Figma variables */
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-headline: 'Fahkwang', 'Inter', serif;
+  --font-headline: 'Bricolage Grotesque', 'Inter', sans-serif;
 
   /* Color / Primary */
   --color-primary-25: #f2f6f5;
@@ -398,7 +398,7 @@ body::after {
   }
 }
 
-/* Headline/* text styles use Fahkwang Bold */
+/* Headline/* text styles use Bricolage Grotesque Bold */
 @utility headline {
   font-family: var(--font-headline);
   font-weight: 700;
