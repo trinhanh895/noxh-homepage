@@ -24,7 +24,7 @@ export function Privacy() {
       />
 
       <section className="flex flex-col gap-4">
-        <h2 className="headline text-xl uppercase">NOX lưu những gì</h2>
+        <h2 className="headline text-xl capitalize">NOX lưu những gì</h2>
         <ul className="flex flex-col gap-3">
           {stored.map((s) => (
             <li key={s.text} className="flex items-start gap-4 rounded-24 bg-primary-50 p-4">
@@ -38,7 +38,7 @@ export function Privacy() {
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="headline text-xl uppercase">Lưu ở đâu</h2>
+        <h2 className="headline text-xl capitalize">Lưu ở đâu</h2>
         <p className="text-m">
           Trong trình duyệt của điện thoại hoặc máy tính bạn đang dùng. NOX không có tài khoản và không gửi những thông tin này lên máy
           chủ. Nếu bạn dùng máy chung (quán net, máy cơ quan), hãy xoá dữ liệu khi dùng xong.
@@ -46,7 +46,7 @@ export function Privacy() {
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="headline text-xl uppercase">Không nên nhập</h2>
+        <h2 className="headline text-xl capitalize">Không nên nhập</h2>
         <p className="text-m">
           Số căn cước, số tài khoản ngân hàng, mật khẩu VNeID. NOX không bao giờ hỏi những thông tin này và không bao giờ yêu cầu bạn
           chuyển tiền.

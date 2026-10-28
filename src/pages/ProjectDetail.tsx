@@ -246,7 +246,7 @@ export function ProjectDetail() {
 function SectionTitle({ title, children }: { title: string; children?: ReactNode }) {
   return (
     <div className="flex max-w-[720px] flex-col gap-2">
-      <h2 className="headline text-xl uppercase">{title}</h2>
+      <h2 className="headline text-xl capitalize">{title}</h2>
       {children && <p className="text-m text-text-neutral-secondary">{children}</p>}
     </div>
   )
@@ -276,7 +276,7 @@ function Intro() {
           <Icon name="location-dot" className="text-primary-500" />
           Xã Bát Tràng, huyện Gia Lâm, Hà Nội
         </p>
-        <h1 className="headline text-headline-m uppercase lg:text-headline-l">NOXH tập trung Bát Khối - Bát Tràng</h1>
+        <h1 className="headline text-headline-m capitalize lg:text-headline-l">NOXH tập trung Bát Khối - Bát Tràng</h1>
         <p className="max-w-[720px] text-m text-text-neutral-secondary">
           Khu nhà ở xã hội phía Đông Hà Nội, hơn 2.000 căn ở giai đoạn 1. Có trường học và trạm y tế ngay trong khu.
         </p>

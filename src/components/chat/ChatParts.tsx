@@ -257,7 +257,7 @@ export function Welcome({ chat, compact = false }: { chat: Chat; compact?: boole
     <div className={`${compact ? 'gap-4 py-4' : 'gap-6 py-10'} flex flex-col items-center text-center`}>
       <Avatar size={compact ? 52 : 72} />
       <div className="flex flex-col gap-1.5">
-        <p className={`${compact ? 'text-l' : 'headline text-xl uppercase md:text-[28px]'} font-semibold`}>Chào bạn, mình giúp gì được?</p>
+        <p className={`${compact ? 'text-l' : 'headline text-xl capitalize md:text-[28px]'} font-semibold`}>Chào bạn, mình giúp gì được?</p>
         <p className={`${compact ? 'text-s' : 'text-m'} mx-auto max-w-[440px] text-text-neutral-secondary`}>
           Hỏi về dự án <b className="font-semibold text-text-neutral-primary">{chat.project.name}</b>, hoặc để mình lập danh sách giấy tờ cho bạn. Câu trả lời
           luôn kèm nguồn.

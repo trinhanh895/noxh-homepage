@@ -24,7 +24,7 @@ export function SectionHeader({
       <h2
         data-reveal="words"
         style={{ '--reveal-delay': '80ms' } as CSSProperties}
-        className={`headline text-balance uppercase ${size === 'xl' ? 'text-headline-m sm:text-headline-l lg:text-headline-xl' : 'text-headline-m lg:text-headline-l'}`}
+        className={`headline text-balance capitalize ${size === 'xl' ? 'text-headline-m sm:text-headline-l lg:text-headline-xl' : 'text-headline-m lg:text-headline-l'}`}
       >
         {lines.map((line, i) => {
           const start = offset

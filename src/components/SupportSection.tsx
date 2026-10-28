@@ -19,7 +19,7 @@ function CardIndex({ n, dark = false }: { n: string; dark?: boolean }) {
 function CardText({ title, body, className = '' }: { title: string[]; body: string; className?: string }) {
   return (
     <div className={`relative flex w-full flex-col gap-2 ${className}`}>
-      <h3 className="headline text-xl uppercase">
+      <h3 className="headline text-xl capitalize">
         {title.map((t, i) => (
           <span key={t} className="block">
             {t}

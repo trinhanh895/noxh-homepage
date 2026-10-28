@@ -28,7 +28,7 @@ export function QrLanding({ slug }: { slug: string }) {
               <Icon name="location-dot" size={14} className="text-warning-500" />
               {p.address}
             </p>
-            <h1 className="headline text-xl uppercase">{p.name}</h1>
+            <h1 className="headline text-xl capitalize">{p.name}</h1>
           </div>
         </div>
 
@@ -127,7 +127,7 @@ export function TopBar({ children }: { children?: ReactNode }) {
 function NotFound() {
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-primary-600 p-6 text-center text-white">
-      <p className="headline text-xl uppercase">Không tìm thấy dự án</p>
+      <p className="headline text-xl capitalize">Không tìm thấy dự án</p>
       <p className="text-m text-primary-50">Mã QR có thể đã cũ. Bạn xem danh sách dự án trên trang NOX nhé.</p>
       <a href="#du-an" className="inline-flex h-12 items-center rounded-pill bg-warning-500 px-6 font-semibold text-primary-600">
         Xem các dự án

@@ -55,7 +55,7 @@ export function Advisor() {
           <span className="flex size-14 items-center justify-center rounded-pill bg-warning-500 text-primary-600" aria-hidden>
             <Icon name="check" size={24} />
           </span>
-          <h1 className="headline text-headline-m uppercase">Đã ghi nhận yêu cầu</h1>
+          <h1 className="headline text-headline-m capitalize">Đã ghi nhận yêu cầu</h1>
           <p className="text-l">
             Mã yêu cầu của bạn: <strong className="font-semibold text-warning-500">{sentCode}</strong>
           </p>
@@ -73,7 +73,7 @@ export function Advisor() {
         </Notice>
 
         <section className="flex flex-col gap-4">
-          <h2 className="headline text-xl uppercase">Điều gì xảy ra tiếp theo</h2>
+          <h2 className="headline text-xl capitalize">Điều gì xảy ra tiếp theo</h2>
           <ol className="flex flex-col gap-4">
             {[
               `Tư vấn viên ${channel === 'zalo' ? 'nhắn Zalo' : 'gọi'} cho bạn trong giờ hành chính, thường trong 1–2 ngày làm việc.`,

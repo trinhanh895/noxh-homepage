@@ -3,8 +3,8 @@ import { Icon } from './Icon'
 
 /*
  * Heading roles on inner pages (keep them consistent):
- *  - Page title (h1):       headline uppercase, 32 → 44px
- *  - Section title (h2):    headline uppercase, 24px (app pages) or 32px (reading pages like a project)
+ *  - Page title (h1):       headline capitalize, 32 → 44px
+ *  - Section title (h2):    headline capitalize, 24px (app pages) or 32px (reading pages like a project)
  *  - Card / item title:     Inter semibold, 20px — never the headline font, never a trailing period
  */
 
@@ -42,7 +42,7 @@ export function PageHeader({
     <header className="flex flex-col gap-5 md:flex-row md:items-end">
       <div className="flex flex-1 flex-col items-start gap-3">
         {eyebrow && <p className="text-s font-semibold text-primary-400">{eyebrow}</p>}
-        <h1 className="headline text-headline-m uppercase lg:text-headline-l">
+        <h1 className="headline text-headline-m capitalize lg:text-headline-l">
           {lines.map((line) => (
             <span key={line} className="block">
               {line}

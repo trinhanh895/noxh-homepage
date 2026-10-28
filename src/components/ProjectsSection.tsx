@@ -59,7 +59,7 @@ function ExpandedContent({ p, index }: { p: Project; index: number }) {
           <Icon name="location-dot" className="text-warning-500" />
           {p.city}
         </span>
-        <h3 className="headline text-xl uppercase">{p.title}</h3>
+        <h3 className="headline text-xl capitalize">{p.title}</h3>
         <p className="text-s text-primary-50">{p.summary}</p>
         <div className="pt-1">
           <SolidButton href={PROJECT_DETAIL_HREF} icon="arrow-up-right">
@@ -145,7 +145,7 @@ export function ProjectsSection() {
               ) : (
                 <div className="relative flex w-full flex-col items-center justify-between py-6" aria-hidden>
                   <span className="headline text-l text-warning-500">{String(i + 1).padStart(2, '0')}</span>
-                  <p className="headline line-clamp-1 max-h-[300px] rotate-180 text-l leading-tight uppercase [writing-mode:vertical-rl] xl:line-clamp-2">{p.title}</p>
+                  <p className="headline line-clamp-1 max-h-[300px] rotate-180 text-l leading-tight capitalize [writing-mode:vertical-rl] xl:line-clamp-2">{p.title}</p>
                   <span className="flex flex-col items-center gap-3">
                     <span className={`${p.status ? 'bg-success-700 ring-bg-success-faded' : 'bg-white/60 ring-white/20'} size-2 rounded-full ring-4`} />
                     <span className="flex size-9 items-center justify-center rounded-full border border-white/30 transition-colors group-hover:border-warning-500 group-hover:text-warning-500">

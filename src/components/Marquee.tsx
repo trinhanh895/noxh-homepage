@@ -19,7 +19,7 @@ export function Marquee({ items }: { items: string[] }) {
     items.map((name, i) => (
       <span key={`${copy}-${name}`} aria-hidden={copy || undefined} className={`${copy ? 'marquee-copy' : ''} flex items-center gap-12`}>
         <span
-          className={`headline text-[40px] leading-[1.3] whitespace-nowrap uppercase md:text-[72px] ${
+          className={`headline text-[40px] leading-[1.3] whitespace-nowrap capitalize md:text-[72px] ${
             i % 2 ? 'text-transparent [-webkit-text-stroke:1px_rgb(246_190_94/0.6)]' : 'text-white/90'
           }`}
         >

@@ -32,7 +32,7 @@ export function Hero() {
         </div>
 
         <div className={`relative z-10 flex flex-1 flex-col items-start justify-center gap-5 pt-12 pb-8 md:py-16 ${INSET}`}>
-          <h1 id="hero-title" className="headline hero-words w-full max-w-[820px] text-balance text-headline-m uppercase sm:text-headline-l lg:text-headline-xl">
+          <h1 id="hero-title" className="headline hero-words w-full max-w-[820px] text-balance text-headline-m capitalize sm:text-headline-l lg:text-headline-xl">
             <span className="block">
               <Words text="Nhà ở xã hội Hà Nội" />{' '}
             </span>
