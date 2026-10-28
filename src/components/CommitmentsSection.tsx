@@ -26,8 +26,19 @@ export function CommitmentsSection() {
       id="cam-ket"
       tabIndex={-1}
       aria-labelledby="cam-ket-title"
-      className="relative isolate flex w-full scroll-mt-4 justify-center rounded-t-[50%_80px] bg-gradient-to-b from-primary-600 from-70% to-transparent px-4 pt-24 pb-24 outline-none sm:px-5 md:rounded-t-[50%_120px] lg:px-20 lg:pt-[160px] lg:pb-[200px]"
+      className="relative isolate flex w-full scroll-mt-4 justify-center px-4 pt-24 pb-24 outline-none sm:px-5 lg:px-20 lg:pt-[160px] lg:pb-[200px]"
     >
+      {/* The dark band's top is one smooth arc (cubic curve, ends meeting the sides at an angle — no kink, no flat top),
+          then the band fades out at the bottom. Replaces an elliptical border-radius that looked dented. */}
+      <svg
+        aria-hidden
+        viewBox="0 0 1000 120"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[80px] w-full md:h-[120px]"
+      >
+        <path d="M0 120 C 260 -40 740 -40 1000 120 Z" fill="var(--color-primary-600)" />
+      </svg>
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[79px] bottom-0 -z-10 bg-gradient-to-b from-primary-600 from-70% to-transparent md:top-[119px]" />
       <div className="flex w-full max-w-[1280px] flex-col gap-10">
         <div id="cam-ket-title">
           <SectionHeader size="l" eyebrow="Để bạn yên tâm" lines={['NOX làm gì,', 'không làm gì']} />
