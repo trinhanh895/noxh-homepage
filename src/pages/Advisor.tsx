@@ -73,7 +73,7 @@ export function Advisor() {
         </Notice>
 
         <section className="flex flex-col gap-4">
-          <h2 className="headline text-xl capitalize">Điều gì xảy ra tiếp theo</h2>
+          <h2 className="headline text-headline-xs capitalize">Điều gì xảy ra tiếp theo</h2>
           <ol className="flex flex-col gap-4">
             {[
               `Tư vấn viên ${channel === 'zalo' ? 'nhắn Zalo' : 'gọi'} cho bạn trong giờ hành chính, thường trong 1–2 ngày làm việc.`,

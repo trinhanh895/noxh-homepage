@@ -109,7 +109,7 @@ export function StepsSection() {
               >
                 <span
                   aria-hidden
-                  className={`${lit ? 'border-warning-500 bg-warning-500 text-primary-600' : 'border-warning-500/50 bg-primary-500 text-warning-500'} headline relative z-[1] flex size-14 items-center justify-center rounded-pill border text-l transition-colors duration-500 md:size-16 md:text-xl`}
+                  className={`${lit ? 'border-warning-500 bg-warning-500 text-primary-600' : 'border-warning-500/50 bg-primary-500 text-warning-500'} headline relative z-[1] flex size-14 items-center justify-center rounded-pill border text-headline-2xs transition-colors duration-500 md:size-16 md:text-headline-xs`}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>

@@ -32,7 +32,7 @@ export function Header({ current = '' }: { current?: string }) {
       <div className="flex w-full max-w-[1600px] items-center gap-6 py-4">
         <a href={routes.home} className="flex items-center gap-2" aria-label="NOX — Trang chủ">
           <span className="size-6 bg-white" aria-hidden />
-          <span className="headline text-xl capitalize">NOX</span>
+          <span className="headline text-headline-xs capitalize">NOX</span>
         </a>
 
         <nav aria-label="Điều hướng chính" className="hidden flex-1 items-center justify-end lg:flex">
@@ -103,7 +103,7 @@ function MobileMenu({ open, onClose, current }: { open: boolean; onClose: () => 
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-2">
             <span className="size-6 bg-white" aria-hidden />
-            <span className="headline text-xl capitalize">NOX</span>
+            <span className="headline text-headline-xs capitalize">NOX</span>
           </span>
           <button
             type="button"

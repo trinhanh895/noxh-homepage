@@ -67,7 +67,7 @@ export function Footer() {
             <div className="flex flex-col gap-5">
               <a href={routes.home} className="flex min-h-11 w-fit items-center gap-2" aria-label="NOX — Trang chủ">
                 <span className="size-6 bg-white" aria-hidden />
-                <span className="headline text-xl capitalize">NOX</span>
+                <span className="headline text-headline-xs capitalize">NOX</span>
               </a>
               <p className="max-w-[320px] text-s text-primary-50">
                 Đồng hành cùng bạn từ tìm hiểu dự án nhà ở xã hội đến chuẩn bị hồ sơ — rõ ràng, từng bước.
@@ -105,7 +105,7 @@ export function Footer() {
           {/* Wordmark */}
           <p
             aria-hidden
-            className="headline pointer-events-none mt-auto bg-gradient-to-b from-primary-400 to-primary-600 bg-clip-text text-center text-[clamp(96px,22vw,340px)] leading-[0.8] text-transparent capitalize select-none"
+            className="headline pointer-events-none mt-auto bg-gradient-to-b from-primary-400 to-primary-600 bg-clip-text text-center text-[clamp(120px,27.5vw,425px)] leading-[0.8] text-transparent capitalize select-none"
           >
             NOXH
           </p>

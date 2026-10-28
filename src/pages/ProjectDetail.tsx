@@ -246,7 +246,7 @@ export function ProjectDetail() {
 function SectionTitle({ title, children }: { title: string; children?: ReactNode }) {
   return (
     <div className="flex max-w-[720px] flex-col gap-2">
-      <h2 className="headline text-xl capitalize">{title}</h2>
+      <h2 className="headline text-headline-xs capitalize">{title}</h2>
       {children && <p className="text-m text-text-neutral-secondary">{children}</p>}
     </div>
   )
@@ -313,7 +313,7 @@ function StatusCard({ me }: { me: MyCase }) {
               {statusLabel[project.status]}
             </StatusTag>
           </dt>
-          <dd className="headline text-l">{project.deadline ? formatDate(project.deadline) : 'Chưa có lịch'}</dd>
+          <dd className="headline text-headline-2xs">{project.deadline ? formatDate(project.deadline) : 'Chưa có lịch'}</dd>
           <dd className="text-s font-medium text-warning-700">{deadlineText(project).split(' · ')[1]}</dd>
         </div>
         <div className="flex flex-col gap-0.5 border-b border-border-divider py-4">

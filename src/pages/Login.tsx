@@ -22,7 +22,7 @@ export function Login() {
               <span className="flex size-12 items-center justify-center rounded-pill bg-primary-50 text-primary-500" aria-hidden>
                 <Icon name="phone" variant="regular" size={20} />
               </span>
-              <h1 className="headline text-xl capitalize md:text-headline-m">Đăng nhập</h1>
+              <h1 className="headline text-headline-xs capitalize md:text-headline-m">Đăng nhập</h1>
               <p className="text-m text-text-neutral-secondary">Dùng số điện thoại bạn đã lưu hồ sơ. Hồ sơ trên máy này sẽ được gộp vào tài khoản.</p>
             </div>
             <form
@@ -89,7 +89,7 @@ function Otp({ phone, onBack }: { phone: string; onBack: () => void }) {
         Đổi số điện thoại
       </button>
       <div className="flex flex-col gap-3">
-        <h1 className="headline text-xl capitalize md:text-headline-m">Nhập mã xác nhận</h1>
+        <h1 className="headline text-headline-xs capitalize md:text-headline-m">Nhập mã xác nhận</h1>
         <p className="text-m text-text-neutral-secondary">
           Mã 6 số vừa gửi tới số <b className="font-semibold text-text-neutral-primary">{maskLong(phone)}</b>. Bản mẫu: nhập 6 số bất kỳ.
         </p>

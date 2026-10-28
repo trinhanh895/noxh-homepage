@@ -48,12 +48,17 @@
   --text-l--line-height: 28px;
   --text-xl: 24px;
   --text-xl--line-height: 32px;
-  --text-headline-m: 32px;
-  --text-headline-m--line-height: 44px;
-  --text-headline-l: 44px;
-  --text-headline-l--line-height: 52px;
-  --text-headline-xl: 52px;
-  --text-headline-xl--line-height: 68px;
+  /* Headline sizes are 1.25× the body scale (card titles 20 → 25, section titles 24 → 30, 32 → 40, 44 → 55, 52 → 65) */
+  --text-headline-2xs: 25px;
+  --text-headline-2xs--line-height: 32px;
+  --text-headline-xs: 30px;
+  --text-headline-xs--line-height: 38px;
+  --text-headline-m: 40px;
+  --text-headline-m--line-height: 48px;
+  --text-headline-l: 55px;
+  --text-headline-l--line-height: 64px;
+  --text-headline-xl: 65px;
+  --text-headline-xl--line-height: 76px;
 
   /* Border / Radius */
   --radius-12: 12px;
@@ -398,10 +403,10 @@ body::after {
   }
 }
 
-/* Headline/* text styles use Bricolage Grotesque Bold */
+/* Headline/* text styles use Bricolage Grotesque ExtraBold (700 × 1.25 → 800, the family's heaviest) */
 @utility headline {
   font-family: var(--font-headline);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* Button Glass — "Tint + Shadow" + "Glass Effect" layers */
