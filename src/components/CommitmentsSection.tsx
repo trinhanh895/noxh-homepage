@@ -88,7 +88,7 @@ export function CommitmentsSection() {
           {/* the one light cone on the page, pointed at the warning */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[70%] bg-[conic-gradient(from_200deg_at_20%_-10%,transparent,rgb(246_190_94/0.10)_8deg,transparent_22deg)]"
+            className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[70%] [mask-image:linear-gradient(to_bottom,#000_40%,transparent)] bg-[conic-gradient(from_200deg_at_20%_-10%,transparent,rgb(246_190_94/0.10)_8deg,transparent_22deg)]"
           />
           <div
             data-reveal="edge"
